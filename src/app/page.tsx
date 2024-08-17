@@ -178,7 +178,7 @@ export default function Home() {
           <>
             <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
               <p className='leading-8 md:leading-[3rem]'>
-              Elon Musk set up a website to <b>TRICK</b> voters into thinking they were registering on behalf of Republicans. We set up
+              Elon Musk set up a website on behalf of Republicans to <b>TRICK</b> voters into thinking they were registering. We set up
               this website to <b>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
               Billionaire-Backed Republican Bullies silence your voice.
               <br/><br/>
