@@ -122,7 +122,7 @@ export default function Home() {
       </animated.div>
 
       <div className="container mx-auto px-5 py-20">
-        <h1 className="text-5xl md:text-9xl font-bold text-center md:text-center py-6 z-50 relative">
+        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-6 z-50 relative">
           {showMelissa ?
           <div className="animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
           : <div className="">{titleWordMap}</div>}
@@ -134,7 +134,7 @@ export default function Home() {
           )}
 
           {showGif && (
-            <div className="relative mt-[-2rem] md:mt-[-2rem] w-full md:h-[400px] h-[200px] animate__animated animate__tada">
+            <div className="relative mt-[-2rem] md:mt-[-4rem] w-full md:h-[350px] h-[200px] animate__animated animate__tada">
               <Image
                 src={wesleyImage}
                 alt="Billionaires for Wesley"
