@@ -85,7 +85,7 @@ export default function Home() {
     </div>
 
   const subheader = [
-    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in z-99 animate__animated animate__heartBeat relative z-50">
+    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in z-99 animate__animated animate__jello relative z-50">
       Billionaire-backed Republicans are trying to strip away your voting rights! Don&apos;t let billionaires silence your voice!
     </h2>,
     <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-index-99">
@@ -105,7 +105,7 @@ export default function Home() {
           <Image
             src={`/what-a-hunt-${logoState}.png`}
             alt="Wesley Hunt Logo"
-            width={150}
+            width={120}
             height={50}
             className={logoState === 3 ? 'hidden' : ''}
           />
@@ -114,7 +114,7 @@ export default function Home() {
               className='animate__animated animate__swing'
               src="/melissa-logo.png"
               alt="Melissa for Congress Logo"
-              width={150}
+              width={120}
               height={50}
             />
           )}
@@ -122,7 +122,7 @@ export default function Home() {
       </animated.div>
 
       <div className="container mx-auto px-5 py-20">
-        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-6 z-50 relative">
+        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-6 md:pb-6 pb-3 z-50 relative">
           {showMelissa ?
           <div className="animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
           : <div className="">{titleWordMap}</div>}
@@ -146,7 +146,7 @@ export default function Home() {
           )}
 
           {showMelissa && (
-            <animated.div style={melissaSpring} className="melissa mt-0 md:mt-[-2rem]">
+            <animated.div style={melissaSpring} className="melissa mt-[-1rem] md:mt-[-2rem]">
               <Image
                 src="/melissa-wins.png"
                 alt="Melissa Wins"
@@ -161,7 +161,7 @@ export default function Home() {
         {showButton && (
           <button
             onClick={handleKickWesleyOut}
-            className={"w-full text-3xl md:text-6xl mt-0 " + buttonColor + " font-bold py-4 px-4 rounded"}
+            className={"w-full text-2xl md:text-6xl mt-0 " + buttonColor + " font-bold py-4 px-4 rounded"}
           >
             {showMelissa ? redblue : wesleyButton}
           </button>
@@ -177,16 +177,16 @@ export default function Home() {
         {showRestOfPage && (
           <>
             <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
-              <p>
+              <p className='leading-8 md:leading-[3rem]'>
               Elon Musk set up a website to TRICK voters into thinking they were registering on behalf of Republicans. We set up
               this website to HELP voters like you check your registration status and register to vote online. Don&apos;t let the
               Billionaire-Backed Republican Bullies silence your voice.
               Vote <b className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</b> all
               the way down the ballot...
               </p>
-              <p className='mt-6 md:text-6xl text-2xl'><b>
+              <p className='mt-6 md:text-5xl text-2xl'><b>
                 <a href={config.links.melissaForCongress} target="_blank">
-                  VOTE <u className='md:text-7xl text-3xl'>MELISSA MCDONOUGH</u> FOR CONGRESS!
+                  VOTE <u className='md:text-6xl text-3xl'>MELISSA MCDONOUGH</u> FOR CONGRESS!
                 </a>
               </b></p>
             </div>
