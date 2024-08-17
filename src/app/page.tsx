@@ -86,7 +86,7 @@ export default function Home() {
 
   const subheader = [
     <h2 key={0} className="md:text-4xl mb-0 animate-slide-in z-99 animate__animated animate__heartBeat relative z-50">
-      {`Billionaire-backed Republicans are trying to strip away your voting rights! Don't let billionaires silence your voice!`}
+      Billionaire-backed Republicans are trying to strip away your voting rights! Don&apos;t let billionaires silence your voice!
     </h2>,
     <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-index-99">
       <i>{`"We have more in common than what divides us!"`}</i>
@@ -125,7 +125,7 @@ export default function Home() {
         <h1 className="text-5xl md:text-9xl font-bold text-center md:text-center py-6 z-50 relative">
           {showMelissa ?
           <div className="animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
-          : <div className="animate__animated animate__rotateIn">{titleWordMap}</div>}
+          : <div className="">{titleWordMap}</div>}
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 text-center">
@@ -179,7 +179,7 @@ export default function Home() {
             <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
               <p>
               Elon Must set up a website to TRICK voters into thinking they were registering on behalf of Republicans. We set up
-              this website to HELP voters like you check your registration status and register to vote online. Don't let the
+              this website to HELP voters like you check your registration status and register to vote online. Don&apos;t let the
               Billionaire-Backed Republican Bullies silence your voice.
               Vote <b className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</b> all
               the way down the ballot...
@@ -220,7 +220,7 @@ export default function Home() {
               <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>
                 <a href={config.links.checkStatus} target="_blank">
                   <h3 className="text-2xl font-bold mb-2">Check Your Status</h3>
-                  <p className="text-lg">Ensure you're registered and ready to vote. It only takes a minute!</p>
+                  <p className="text-lg">Ensure you&apos;re registered and ready to vote. It only takes a minute!</p>
                 </a>
               </div>
               <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>

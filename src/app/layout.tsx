@@ -23,6 +23,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        {/* Standard favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        
+        {/* PNG favicons for different devices */}
+        <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+        
+        {/* Apple Touch Icon */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        {/* Android Chrome Icon */}
+        <link rel="icon" href="/android-chrome-192x192.png" sizes="192x192" />
+        <link rel="icon" href="/android-chrome-512x512.png" sizes="512x512" />
+      </Head>
       <body className={`${titilliumWeb.className}`}>{children}</body>
     </html>
   );
