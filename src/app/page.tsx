@@ -122,7 +122,7 @@ export default function Home() {
       </animated.div>
 
       <div className="container mx-auto px-5 py-20">
-        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-6 md:pb-6 pb-3 z-50 relative">
+        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-2 md:py-6 pb-3 z-50 relative">
           {showMelissa ?
           <div className="animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
           : <div className="">{titleWordMap}</div>}
