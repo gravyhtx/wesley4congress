@@ -18,6 +18,7 @@ export default function Home() {
   const [showMelissa, setShowMelissa] = useState(false);
   const [showRestOfPage, setShowRestOfPage] = useState(false);
   const [wesleyState, setWesleyState] = useState(0);
+  const [isGifLoaded, setIsGifLoaded] = useState(false);
 
   const delay = 400
   
@@ -40,7 +41,17 @@ export default function Home() {
         setTimeout(() => setShowButton(true), 1000);
       }, 500);
     }
-  }, [currentIndex, delay]);  
+  }, [currentIndex, delay]);
+
+  useEffect(() => {
+    // Preload the GIF using native JavaScript Image object
+    const img = new window.Image();
+    img.src = '/billionaires4wesley.gif'; // Your GIF path
+    img.onload = () => {
+      // Once the GIF is fully loaded, update the state
+      setIsGifLoaded(true);
+    };
+  }, []);
 
   const handleKickWesleyOut = () => {
     setLogoState(1);
@@ -98,8 +109,9 @@ export default function Home() {
     return Math.floor(difference / (1000 * 60 * 60 * 24));
   }
 
-  return (
+  const ReturnPage = () => (
     <main className="min-h-screen text-white overflow-hidden">
+
       <animated.div style={logoSpring} className="w-full flex justify-center p-4 absolute">
         <a href={config.links.melissaForCongress} target="_blank">
           <Image
@@ -257,4 +269,6 @@ export default function Home() {
       </footer>)}
     </main>
   );
+
+  return isGifLoaded ? <ReturnPage /> : <></>
 }
