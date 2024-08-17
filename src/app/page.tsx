@@ -178,11 +178,12 @@ export default function Home() {
           <>
             <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
               <p className='leading-8 md:leading-[3rem]'>
-              Elon Musk set up a website to TRICK voters into thinking they were registering on behalf of Republicans. We set up
-              this website to HELP voters like you check your registration status and register to vote online. Don&apos;t let the
+              Elon Musk set up a website to <b>TRICK</b> voters into thinking they were registering on behalf of Republicans. We set up
+              this website to <b>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
               Billionaire-Backed Republican Bullies silence your voice.
-              Vote <b className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</b> all
-              the way down the ballot...
+              <br/><br/>
+              <b>Vote <span className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</span> all
+              the way down the ballot...</b>
               </p>
               <p className='mt-6 md:text-5xl text-2xl'><b>
                 <a href={config.links.melissaForCongress} target="_blank">
