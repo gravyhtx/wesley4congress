@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Titillium_Web } from "next/font/google";
+import { Merriweather } from "next/font/google";
+import Head from "next/head";
 import "./globals.css";
+import 'animate.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const titilliumWeb = Titillium_Web({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '600', '700', '900'], // Specify the weights you need
+});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${titilliumWeb.className}`}>{children}</body>
     </html>
   );
 }
