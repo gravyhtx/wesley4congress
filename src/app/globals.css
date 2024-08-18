@@ -83,7 +83,7 @@
 }
 
 html {
-  background: var(--purple-hsl)
+  background: hsl(var(--purple-hsl));
 }
 
 .white-stroke {

@@ -30,6 +30,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/android-chrome-192x192.png" sizes="192x192" />
         <link rel="icon" href="/android-chrome-512x512.png" sizes="512x512" />
+        {/* Preload the GIF */}
+        <link rel="preload" href="/billionaires4wesley.gif" as="image" />
       </Head>
       <body className={`${titilliumWeb.className}`}>{children}</body>
     </html>
