@@ -153,6 +153,8 @@ export default function Home() {
                   layout="fill"
                   objectFit="contain"
                   className="animate-fade-in"
+                  loading='eager'
+                  unoptimized
                 />
               </div>
             )}
