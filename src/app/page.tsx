@@ -89,10 +89,10 @@ export default function Home() {
     </div>
 
   const subheader = [
-    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in animate__animated animate__jello relative z-99">
+    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in animate__animated animate__jello relative z-50">
       {`Billionaire-backed Republicans are trying to strip away your voting rights! Don't let billionaires silence your voice!`}
     </h2>,
-    <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-99">
+    <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-50">
       <i>{`"We have more in common than what divides us!"`}</i>
     </h2>
   ]
@@ -140,10 +140,11 @@ export default function Home() {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 text-center text-shadow-3">
-            {showSubheader && (
+            <div className='subheader'>
+              {showSubheader && (
                 showMelissa ? subheader[1] : subheader[0]
-            )}
-
+              )}
+            </div>
             {showGif && (
               <div className="relative mt-[-2rem] md:mt-[-4rem] w-full md:h-[350px] h-[200px] animate__animated animate__tada">
                 <Image
