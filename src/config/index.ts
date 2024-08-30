@@ -1,11 +1,10 @@
 export const config = {
   footer: [
-    "melissa@melissaforcongress.com",
-    "281-381-0219",
-    "Paid for by Melissa For Congress",
-    "Treasurer: Jeff Autor",
-    "© 2024 All rights reserved"
-  ],
+    ["melissa@melissaforcongress.com", "mailto:melissa@melissaforcongress.com", "_self"],
+    ["281-381-0219", "tel:+12813810219", "_self"],
+    ["Paid for by Melissa For Congress", "https://melissaforcongress.com/", "_blank"],
+    ["© 2024 All rights reserved", "https://melissaforcongress.com/", "_blank"],
+  ] as [string, string, string][],
   links: {
     checkStatus: "https://www.vote.org/am-i-registered-to-vote/",
     registerOnline: "https://vote.gov/",
@@ -14,7 +13,7 @@ export const config = {
     voterRegistrarDirectory: "https://www.sos.state.tx.us/elections/voter/votregduties.shtml",
     melissaForCongress: "https://melissaforcongress.com/",
     donate: "https://secure.actblue.com/donate/MelissaForCongress2024",
-  },
+  } as Record<string, string>,
   importantDates: {
     registrationDeadline: {title: "Voter Registration Deadline", date: new Date("2024-10-07T23:59:59")},
     absenteeRequestDeadline: {title: "Absentee Request Deadline", date: new Date("2024-10-25T23:59:59")},
@@ -22,29 +21,7 @@ export const config = {
     absenteeReturnByMailDeadline: {title: "Absentee Return By Mail Deadline", date: new Date("2024-11-06T23:59:59")},
     earlyVotingStart: {title: "Early Voting Starts", date: new Date("2024-10-21T00:00:00")},
     earlyVotingEnd: {title: "Early Voting Ends", date: new Date("2024-11-01T23:59:59")},
-  },
-  // funders: [
-  //   { company: "Enterprise Products Partners", amount: "$131,900" },
-  //   { company: "S&B Engineers & Constructors", amount: "$80,000" },
-  //   { company: "Walter Oil & Gas", amount: "$42,200" },
-  //   { company: "Strike Construction", amount: "$25,000" },
-  //   { company: "Suretec Insurance Co", amount: "$25,000" },
-  //   { company: "Troy Construction (Texas)", amount: "$25,000" },
-  //   { company: "Jones Lumber Leverage Lender LLC", amount: "$22,500" },
-  //   { company: "Quantum Energy Partners", amount: "$17,800" },
-  //   { company: "Tauber Oil", amount: "$11,200" },
-  //   { company: "Charbonneau Industries", amount: "$10,000" },
-  //   { company: "Hanover Co", amount: "$10,000" },
-  //   { company: "Integrated Consulting & Inspections", amount: "$10,000" },
-  //   { company: "Je Matadi", amount: "$10,000" },
-  //   { company: "Mirand Response Systems", amount: "$10,000" },
-  //   { company: "Park Ten Capital", amount: "$10,000" },
-  //   { company: "Plains All American Pipeline", amount: "$10,000" },
-  //   { company: "Tablerock Survey LLC", amount: "$10,000" },
-  //   { company: "Texas Crude Energy", amount: "$10,000" },
-  //   { company: "Phillips 66", amount: "$6,100" },
-  //   { company: "Tactical Automation", amount: "$6,000" },
-  // ],
+  } as Record<string, {title: string, date: Date}>,
   funders: [
     { company: "Tablerock Survey LLC", amount: "$10,000" },
     { company: "Tactical Automation", amount: "$6,000" },
@@ -66,6 +43,5 @@ export const config = {
     { company: "Tauber Oil", amount: "$11,200" },
     { company: "Texas Crude Energy", amount: "$10,000" },
     { company: "Hanover Co", amount: "$10,000" },
-]
-
+  ] as { company: string, amount: string }[],
 }

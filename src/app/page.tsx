@@ -5,9 +5,11 @@ import Image from 'next/image';
 import { useSpring, animated } from 'react-spring';
 import { CustomMarquee } from '@/components/CustomMarquee';
 import { Countdown } from '@/components/Countdown';
-import { CallToAction } from '../components/CallToAction/index';
+import { CallToAction } from '@/components/CallToAction/index';
+import { Footer } from '@/components/Footer';
 import { config } from '@/config';
 import Link from 'next/link';
+import { ElectionDay } from '../components/ElectionDay/index';
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -87,10 +89,10 @@ export default function Home() {
     </div>
 
   const subheader = [
-    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in z-99 animate__animated animate__jello relative z-50">
-      Billionaire-backed Republicans are trying to strip away your voting rights! Don&apos;t let billionaires silence your voice!
+    <h2 key={0} className="md:text-4xl mb-0 animate-slide-in animate__animated animate__jello relative z-99">
+      {`Billionaire-backed Republicans are trying to strip away your voting rights! Don't let billionaires silence your voice!`}
     </h2>,
-    <h2 key={1} className="animate__animated animate__flipInY text-shadow-3 md:text-6xl text-xl mb-0 animate-slide-in z-index-99">
+    <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-99">
       <i>{`"We have more in common than what divides us!"`}</i>
     </h2>
   ]
@@ -106,140 +108,130 @@ export default function Home() {
     return Math.floor(difference / (1000 * 60 * 60 * 24));
   }
 
-  return (
+  return (<>
     <main onClick={anythingClicks} className="min-h-screen text-white overflow-hidden">
-      <animated.div style={logoSpring} className="w-full flex justify-center p-4 absolute">
-        <a href={config.links.melissaForCongress} target="_blank">
-          <Image
-            src={`/what-a-hunt-${logoState}.png`}
-            alt="Wesley Hunt Logo"
-            width={120}
-            height={50}
-            className={logoState === 3 ? 'hidden' : ''}
-          />
-          {logoState === 3 && (
+      <div className={!showMelissa ? "view-1" : "view-2"}>
+        <animated.div style={logoSpring} className="w-full flex justify-center p-4 absolute">
+          <a href={config.links.melissaForCongress} target="_blank">
             <Image
-              className='animate__animated animate__swing logo-shadow'
-              src="/melissa-logo.png"
-              alt="Melissa for Congress Logo"
+              src={`/what-a-hunt-${Math.min(logoState, 2)}.png`}
+              alt="Wesley Hunt Logo"
               width={120}
               height={50}
+              className={logoState === 3 ? 'hidden' : ''}
             />
-          )}
-        </a>
-      </animated.div>
-
-      <div className="container mx-auto px-5 py-20">
-        <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-2 md:py-6 pb-3 z-50 relative">
-          {showMelissa
-            ? <div className="text-shadow-2 animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
-            : <div className="text-shadow-6">{titleWordMap}</div>}
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 text-center">
-          {showSubheader && (
-              showMelissa ? subheader[1] : subheader[0]
-          )}
-
-          {showGif && (
-            <div className="relative mt-[-2rem] md:mt-[-4rem] w-full md:h-[350px] h-[200px] animate__animated animate__tada">
+            {logoState === 3 && (
               <Image
-                src={wesleyImage}
-                alt="Billionaires for Wesley"
-                layout="fill"
-                objectFit="contain"
-                className="animate-fade-in"
+                className='animate__animated animate__swing logo-shadow'
+                src="/melissa-logo.png"
+                alt="Melissa for Congress Logo"
+                width={120}
+                height={50}
               />
-            </div>
-          )}
+            )}
+          </a>
+        </animated.div>
 
-          {showMelissa && (
-            <animated.div style={melissaSpring} className="melissa mt-[-1rem] md:mt-[-2rem]">
-              <Image
-                src="/melissa-wins.png"
-                alt="Melissa Wins"
-                width={500}
-                height={300}
-                className="animate-glow"
-              />
-            </animated.div>
-          )}
-        </div>
+        <div className="container mx-auto px-5 py-20">
+          <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-2 md:py-6 pb-3 z-50 relative">
+            {showMelissa
+              ? <div className="text-shadow-2 animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
+              : <div className="text-shadow-6">{titleWordMap}</div>}
+          </h1>
 
-        {showButton && (
-          <button
-            onClick={handleKickWesleyOut}
-            className={"w-full text-2xl md:text-6xl mt-0 font-bold py-4 px-4 rounded border-5" + buttonColor}
-          >
-            {showMelissa ? redblue : wesleyButton}
-          </button>
-        )}
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 text-center text-shadow-3">
+            {showSubheader && (
+                showMelissa ? subheader[1] : subheader[0]
+            )}
 
-        {showButton && showMarquee && (
-          <div className="mt-8 relative z-50">
-            <div className="bg-purple md:text-xl border-2 m-0 text-center p-2 font-bold mb-2 text-shadow-2 bg-[rgba(255,255,255,0.1)]"><i>WESLEY HUNT IS BROUGHT TO YOU BY:</i></div>
-            <CustomMarquee items={config.funders} />
+            {showGif && (
+              <div className="relative mt-[-2rem] md:mt-[-4rem] w-full md:h-[350px] h-[200px] animate__animated animate__tada">
+                <Image
+                  src={wesleyImage}
+                  alt="Billionaires for Wesley"
+                  layout="fill"
+                  objectFit="contain"
+                  className="animate-fade-in"
+                />
+              </div>
+            )}
+
+            {showMelissa && (
+              <animated.div style={melissaSpring} className="melissa mt-[-1rem] md:mt-[-2rem]">
+                <Image
+                  src="/melissa-wins.png"
+                  alt="Melissa Wins"
+                  width={500}
+                  height={300}
+                  className="animate-glow"
+                />
+              </animated.div>
+            )}
           </div>
-        )}
 
-        {showRestOfPage && (
-          <>
-            <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
-              <p className='leading-8 md:leading-[3rem]'>
-              Elon Musk set up a website on behalf of Republicans to&nbsp;
-              <Link href='' target='_blank' className='egad'>
-                <b>TRICK</b> voters
-              </Link>
-              &nbsp;into thinking they were registering. We set up
-              this website to <b className='egad'>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
-              Billionaire-Backed Republican Bullies silence your voice.
-              <br/><br/>
-              <b>Vote <span className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</span> all
-              the way down the ballot...</b>
-              </p>
-              <p className='mt-6 md:text-5xl text-2xl'><b>
-                <a href={config.links.melissaForCongress} target="_blank">
-                  VOTE <u className='md:text-6xl text-3xl egad'>MELISSA MCDONOUGH</u> FOR CONGRESS!
+          {showButton && (
+            <button
+              onClick={handleKickWesleyOut}
+              className={"w-full text-2xl md:text-6xl mt-0 font-bold py-4 px-4 rounded border-5" + buttonColor}
+            >
+              {showMelissa ? redblue : wesleyButton}
+            </button>
+          )}
+
+          {showButton && showMarquee && (
+            <div className="mt-8 relative z-50">
+              <div className="bg-purple md:text-xl border-2 m-0 text-center p-2 font-bold mb-2 text-shadow-2 bg-[rgba(255,255,255,0.1)]"><i>WESLEY HUNT IS BROUGHT TO YOU BY:</i></div>
+              <CustomMarquee items={config.funders} />
+            </div>
+          )}
+
+          {showRestOfPage && (
+            <>
+              <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
+                <p className='leading-8 md:leading-[3rem]'>
+                Elon Musk set up a website on behalf of Republicans to&nbsp;
+                <Link href='' target='_blank' className='egad'>
+                  <b>TRICK</b> voters
+                </Link>
+                &nbsp;into thinking they were registering. We set up
+                this website to <b className='egad'>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
+                Billionaire-Backed Republican Bullies silence your voice.
+                <br/><br/>
+                <b>Vote <span className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</span> all
+                the way down the ballot...</b>
+                </p>
+                <p className='mt-6 md:text-5xl text-2xl'><b>
+                  <a href={config.links.melissaForCongress} target="_blank">
+                    VOTE <u className='md:text-6xl text-3xl egad'>MELISSA McDONOUGH</u> FOR CONGRESS!
+                  </a>
+                </b></p>
+              </div>
+              <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href={config.links.checkStatus} target="_blank" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-center text-3xl">
+                  Check Voter Status
                 </a>
-              </b></p>
-            </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <a href={config.links.checkStatus} target="_blank" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-center text-3xl">
-                Check Voter Status
-              </a>
-              <a href={config.links.registerOnline} target="_blank" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-center text-3xl">
-                Register to Vote
-              </a>
-            </div>
+                <a href={config.links.registerOnline} target="_blank" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-center text-3xl">
+                  Register to Vote
+                </a>
+              </div>
 
-            <div className="mt-16 text-center">
-              <div className='mb-8 p-6 bg-purple-700 rounded-lg egad'>
-                <h3 className="text-3xl md:text-6xl font-bold mb-4">ELECTION DAY</h3>
-                <p className="text-4xl mb-2">11/05/2024</p>
-                <div className="text-[120px] mt-[-30px] mb-[-30px] font-bold">{timeToElection()}</div>
-                <div className="text-4xl">DAYS</div>
+              <div className="mt-16 text-center">
+                <ElectionDay daysUntilElection={timeToElection()} />
+                <br/>
+                <h2 className="text-5xl md:text-8xl text-center font-bold mb-10 underline">IMPORTANT DATES</h2>
+                <br/>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {Object.entries(config.importantDates).map(([key, value]) => (
+                    <Countdown key={key} date={value} />
+                  ))}
+                </div>
               </div>
-              <br/>
-              <h2 className="text-5xl md:text-8xl text-center font-bold mb-10 underline">IMPORTANT DATES</h2>
-              <br/>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {Object.entries(config.importantDates).map(([key, value]) => (
-                  <Countdown key={key} date={value} />
-                ))}
-              </div>
-            </div>
               <CallToAction />
-          </>
-        )}
-      </div>
-
-      {showMelissa && (<footer className="bg-purple-800 text-white py-8 mt-16">
-        <div className="container mx-auto px-4">
-          {config.footer.map((item, index) => (
-            <p key={index} className="text-sm mb-2">{item}</p>
-          ))}
+            </>
+          )}
         </div>
-      </footer>)}
+      </div>
+      {showMelissa && <Footer items={config.footer} />}
     </main>
-  );
+  </>);
 }

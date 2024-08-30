@@ -23,7 +23,7 @@ const MarqueeItem: React.FC<MarqueeItemProps & { index: number }> = ({ company, 
 
   return (
     <div className="mx-4 marquee">
-      <h3 className={`text-lg italic ` + (index % 2 === 0 ? `opacity-90` : `opacity-95`)}><b>{company}</b></h3>
+      <h3 className={`text-lg ` + (index % 2 === 0 ? `opacity-90` : `opacity-100`)}><b>{company}</b></h3>
       <div 
         className="text-4xl" 
         style={{ textShadow: glow }}
