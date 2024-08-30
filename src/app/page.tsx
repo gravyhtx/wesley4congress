@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { useSpring, animated } from 'react-spring';
 import { CustomMarquee } from '@/components/CustomMarquee';
 import { Countdown } from '@/components/Countdown';
+import { CallToAction } from '../components/CallToAction/index';
 import { config } from '@/config';
+import Link from 'next/link';
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +21,7 @@ export default function Home() {
   const [showRestOfPage, setShowRestOfPage] = useState(false);
   const [wesleyState, setWesleyState] = useState(0);
 
-  const delay = 400
+  const delay = 350
   
   useEffect(() => {
     const words = [<>YOUR&nbsp;</>,<>VOTER&nbsp;</>,<>RIGHTS&nbsp;</>,<>ARE&nbsp;</>,<>UNDER&nbsp;</>,<>ATTACK!</>];
@@ -75,12 +77,12 @@ export default function Home() {
     </span>
   ))
 
-  const buttonColor = showMelissa ? "bg-purple-700 hover:bg-purple-500 text-white" : "bg-yellow-500 hover:bg-yellow-400 text-black animate-pulse"
+  const buttonColor = showMelissa ? " bg-purple-700 hover:bg-purple-500 text-white" : " bg-yellow-500 hover:bg-yellow-400 text-[#222] animate-pulse"
 
   const wesleyButton = typeof window !== 'undefined' && window.innerWidth > 768 ? "CLICK TO KICK WESLEY OUT OF CONGRESS!" : "TAP TO KICK WESLEY OUT OF CONGRESS!"
 
   const redblue = 
-    <div className="">
+    <div className="text-shadow-2">
       <p style={{textAlign: "center"}}>NOT A <span className="white-stroke" style={{color: "#ff0000", fontWeight: "900"}}>RED</span> OR A <span className="white-stroke" style={{color: "#0000ff", fontWeight: "900"}}>BLUE</span> PROBLEM BUT A <span className="white-stroke" style={{color: "#4f0088", fontWeight: "900"}}>PURPLE</span> SOLUTION</p>
     </div>
 
@@ -88,18 +90,24 @@ export default function Home() {
     <h2 key={0} className="md:text-4xl mb-0 animate-slide-in z-99 animate__animated animate__jello relative z-50">
       Billionaire-backed Republicans are trying to strip away your voting rights! Don&apos;t let billionaires silence your voice!
     </h2>,
-    <h2 key={1} className="animate__animated animate__flipInY md:text-6xl text-xl mb-0 animate-slide-in z-index-99">
+    <h2 key={1} className="animate__animated animate__flipInY text-shadow-3 md:text-6xl text-xl mb-0 animate-slide-in z-index-99">
       <i>{`"We have more in common than what divides us!"`}</i>
     </h2>
   ]
 
-  function timeToElection() {
+  const anythingClicks = () => {
+    if(showButton && !showMelissa) {
+      handleKickWesleyOut();
+    }
+  }
+
+  const timeToElection = () => {
     const difference = +new Date("2024-11-05T19:00:00") - +new Date();
     return Math.floor(difference / (1000 * 60 * 60 * 24));
   }
 
   return (
-    <main className="min-h-screen text-white overflow-hidden">
+    <main onClick={anythingClicks} className="min-h-screen text-white overflow-hidden">
       <animated.div style={logoSpring} className="w-full flex justify-center p-4 absolute">
         <a href={config.links.melissaForCongress} target="_blank">
           <Image
@@ -111,7 +119,7 @@ export default function Home() {
           />
           {logoState === 3 && (
             <Image
-              className='animate__animated animate__swing'
+              className='animate__animated animate__swing logo-shadow'
               src="/melissa-logo.png"
               alt="Melissa for Congress Logo"
               width={120}
@@ -123,9 +131,9 @@ export default function Home() {
 
       <div className="container mx-auto px-5 py-20">
         <h1 className="text-5xl md:text-8xl font-bold text-center md:text-center py-2 md:py-6 pb-3 z-50 relative">
-          {showMelissa ?
-          <div className="animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
-          : <div className="">{titleWordMap}</div>}
+          {showMelissa
+            ? <div className="text-shadow-2 animate__animated animate__rollIn">VOTE MELISSA FOR CONGRESS!</div>
+            : <div className="text-shadow-6">{titleWordMap}</div>}
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 text-center">
@@ -161,7 +169,7 @@ export default function Home() {
         {showButton && (
           <button
             onClick={handleKickWesleyOut}
-            className={"w-full text-2xl md:text-6xl mt-0 " + buttonColor + " font-bold py-4 px-4 rounded"}
+            className={"w-full text-2xl md:text-6xl mt-0 font-bold py-4 px-4 rounded border-5" + buttonColor}
           >
             {showMelissa ? redblue : wesleyButton}
           </button>
@@ -169,7 +177,7 @@ export default function Home() {
 
         {showButton && showMarquee && (
           <div className="mt-8 relative z-50">
-            <div className="bg-purple md:text-xl border-2 m-0 text-center p-2 font-bold mb-2"><i>WESLEY HUNT IS BROUGHT TO YOU BY:</i></div>
+            <div className="bg-purple md:text-xl border-2 m-0 text-center p-2 font-bold mb-2 text-shadow-2 bg-[rgba(255,255,255,0.1)]"><i>WESLEY HUNT IS BROUGHT TO YOU BY:</i></div>
             <CustomMarquee items={config.funders} />
           </div>
         )}
@@ -178,8 +186,12 @@ export default function Home() {
           <>
             <div className='mt-[4rem] text-center md:text-4xl text-xl italic'>
               <p className='leading-8 md:leading-[3rem]'>
-              Elon Musk set up a website on behalf of Republicans to <b>TRICK</b> voters into thinking they were registering. We set up
-              this website to <b>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
+              Elon Musk set up a website on behalf of Republicans to&nbsp;
+              <Link href='' target='_blank' className='egad'>
+                <b>TRICK</b> voters
+              </Link>
+              &nbsp;into thinking they were registering. We set up
+              this website to <b className='egad'>HELP</b> voters like you check your registration status and register to vote online. Don&apos;t let the
               Billionaire-Backed Republican Bullies silence your voice.
               <br/><br/>
               <b>Vote <span className='white-stroke text-blue md:text-5xl text-2xl' style={{color: "#0000ff", fontWeight: "900"}}>BLUE</span> all
@@ -187,7 +199,7 @@ export default function Home() {
               </p>
               <p className='mt-6 md:text-5xl text-2xl'><b>
                 <a href={config.links.melissaForCongress} target="_blank">
-                  VOTE <u className='md:text-6xl text-3xl'>MELISSA MCDONOUGH</u> FOR CONGRESS!
+                  VOTE <u className='md:text-6xl text-3xl egad'>MELISSA MCDONOUGH</u> FOR CONGRESS!
                 </a>
               </b></p>
             </div>
@@ -201,7 +213,7 @@ export default function Home() {
             </div>
 
             <div className="mt-16 text-center">
-              <div className='mb-8 p-6 bg-purple-700 rounded-lg'>
+              <div className='mb-8 p-6 bg-purple-700 rounded-lg egad'>
                 <h3 className="text-3xl md:text-6xl font-bold mb-4">ELECTION DAY</h3>
                 <p className="text-4xl mb-2">11/05/2024</p>
                 <div className="text-[120px] mt-[-30px] mb-[-30px] font-bold">{timeToElection()}</div>
@@ -216,34 +228,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>
-                <a href={config.links.checkStatus} target="_blank">
-                  <h3 className="text-2xl font-bold mb-2">Check Your Status</h3>
-                  <p className="text-lg">Ensure you&apos;re registered and ready to vote. It only takes a minute!</p>
-                </a>
-              </div>
-              <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>
-                <a href={config.links.registerOnline} target="_blank">
-                  <h3 className="text-2xl font-bold mb-2">Register Online</h3>
-                  <p className="text-lg">Quick and easy online registration process. Make your voice heard!</p>
-                </a>
-              </div>
-              <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>
-                <a href={config.links.updateRegistration} target="_blank">
-                  <h3 className="text-2xl font-bold mb-2">Update Your Registration</h3>
-                  <p className="text-lg">Keep your registration information up to date to avoid any issues on election day.</p>
-                </a>
-              </div>
-              <div className='hover:bg-purple-700 bg-purple-600 rounded-lg p-4'>
-                <a href={config.links.donate} target="_blank">
-                  <h3 className="text-2xl font-bold mb-2">Donate Now</h3>
-                  <p className="text-lg">Support the campaign and ensure every voice is heard. Your contribution matters!</p>
-                </a>
-              </div>
-            </div>
-
+              <CallToAction />
           </>
         )}
       </div>

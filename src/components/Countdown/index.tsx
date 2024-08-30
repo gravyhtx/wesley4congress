@@ -28,7 +28,7 @@ export const Countdown: React.FC<CountdownProps> = ({ date }) => {
   });
 
   return (
-    <Card className="w-[350px] text-center bg-purple text-white w-full">
+    <Card className="countdown w-[350px] text-center border-2 bg-purple text-white w-full">
       <CardHeader className="mt-6 mb-2 p-0">
         <CardTitle className="text-xl"><u>{date.title}</u></CardTitle>
       </CardHeader>
